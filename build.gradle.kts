@@ -1,4 +1,5 @@
 buildscript {
+	val kotlinVersion = "1.4.10"
     repositories {
         gradlePluginPortal()
         jcenter()
@@ -6,8 +7,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
-        classpath("com.android.tools.build:gradle:4.0.1")
+		classpath("com.android.tools.build:gradle:4.0.2")
+		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+		classpath("org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion")
     }
 }
 group = "com.pethersilva.kotlinmultiplatform"
