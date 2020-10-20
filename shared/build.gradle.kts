@@ -28,11 +28,11 @@ kotlin {
 	//add kotlin version
 	val kotlinVersion = "1.4.10"
 	//add ktor dependency
-	val ktorVersion = "1.4.0"
+	val ktorVersion = "1.4.1"
 	//adding serialization dependency
-	val serializationVersion = "1.0.0-RC"
+	val serializationVersion = "1.0.0"
 	//adding coroutines dependency
-	val coroutinesVersion = "1.3.9-native-mt"
+	val coroutinesVersion = "1.4.0-M1"
 
 	sourceSets {
 

@@ -2,10 +2,11 @@ package com.pethersilva.kotlinmultiplatform.androidApp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.pethersilva.kotlinmultiplatform.shared.Greeting
 import android.widget.TextView
 import android.widget.Toast
-import com.pethersilva.kotlinmultiplatform.shared.sdk.TFVSdk
+import com.pethersilva.kotlinmultiplatform.shared.sdk.SpaceXSdk
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -16,7 +17,7 @@ fun greet(): String {
 
 class MainActivity : AppCompatActivity() {
 
-	private val sdk = TFVSdk()
+	private val sdk = SpaceXSdk()
 	private val mainScope = MainScope()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         val tv: TextView = findViewById(R.id.text_view)
         tv.text = greet()
-
-		showTFV()
+		showRocket()
     }
 
 	override fun onDestroy() {
@@ -34,15 +34,14 @@ class MainActivity : AppCompatActivity() {
 		mainScope.cancel()
 	}
 
-	private fun showTFV() {
+	private fun showRocket() {
 		mainScope.launch {
-
 			kotlin.runCatching {
 				sdk.getAll()
 			}.onSuccess {
 				print(it)
 			}.onFailure {
-				//print("ERRO: ========= ${it.message}  ==========")
+				Log.d("PJS", "ERRO: ========= ${it.message}  ==========", it)
 				print("=============================================")
 				Toast.makeText(this@MainActivity, it.message, Toast.LENGTH_LONG).show()
 			}
